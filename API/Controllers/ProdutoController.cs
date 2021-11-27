@@ -34,13 +34,13 @@ namespace API.Controllers
                 return Created("", produto);
                 }
             }else{
-                produto.Estoque = _context.Estoques.Find(produto.Estoque.Id);
-                produto.Fornecedor = _context.Fornecedores.Find(produto.Fornecedor.Id);
-                //produtoEncontrado.Quantidade = produtoEncontrado.Quantidade + produtoEncontrado.Quantidade
-                produtoEncontrado.Quantidade += produto.Quantidade;
-                Update(produtoEncontrado);
-                _context.SaveChanges();
-                return Ok(produtoEncontrado);
+                    produto.Estoque = _context.Estoques.Find(produto.Estoque.Id);
+                    produto.Fornecedor = _context.Fornecedores.Find(produto.Fornecedor.Id);
+                    //produtoEncontrado.Quantidade = produtoEncontrado.Quantidade + produtoEncontrado.Quantidade
+                    produtoEncontrado.Quantidade += produto.Quantidade;
+                    Update(produtoEncontrado);
+                    _context.SaveChanges();
+                    return Ok(produtoEncontrado);
             }
         }
 
@@ -78,6 +78,29 @@ namespace API.Controllers
             _context.SaveChanges();
             return Ok(_context.Produtos.ToList());
         }
+
+        //DELETE: /api/produto/saida
+        [HttpDelete]
+        [Route("saida")]
+        public IActionResult Saida([FromBody] Produto produto)
+        {
+
+            Produto produtoEncontrado = _context.Produtos.FirstOrDefault(produto => produto.NomeProduto == produto.NomeProduto);
+
+            if (produtoEncontrado == null)
+            {
+                return NotFound();
+            }else if(produtoEncontrado.Quantidade >= 1){
+            produtoEncontrado.Quantidade -= produto.Quantidade;
+            Update(produtoEncontrado);
+            _context.SaveChanges();
+            return Ok(produtoEncontrado);
+            }else{
+                return NotFound();
+            }
+        }
+
+
 
 
         //PUT: api/produto/update
