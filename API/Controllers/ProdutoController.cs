@@ -90,7 +90,7 @@ namespace API.Controllers
             if (produtoEncontrado == null)
             {
                 return NotFound();
-            }else if(produtoEncontrado.Quantidade >= 1){
+            }else if(produtoEncontrado.Quantidade > 0){
             produtoEncontrado.Quantidade -= produto.Quantidade;
             Update(produtoEncontrado);
             _context.SaveChanges();
