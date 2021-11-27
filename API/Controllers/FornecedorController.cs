@@ -69,7 +69,6 @@ namespace API.Controllers
             return Ok(_context.Fornecedores.ToList());
         }
 
-
         //PUT: api/fornecedor/update
         [HttpPut]
         [Route("update")]

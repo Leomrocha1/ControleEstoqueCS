@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using API.Data;
 using API.Models;
@@ -17,16 +15,26 @@ namespace API.Controllers
             _context = context;
         }
 
-        //POST: api/estoque/entrada
+        //POST: api/estoque/create
         [HttpPost]
-        [Route("entrada")]
+        [Route("create")]
         public IActionResult Create([FromBody] Estoque estoque)
         {
-            
+            Estoque estoqueEncontrado = _context.Estoques.FirstOrDefault(e => e.TipoEstoque == estoque.TipoEstoque);
+
+            if(estoqueEncontrado == null)
+            {
             _context.Estoques.Add(estoque);
             _context.SaveChanges();
             return Created("", estoque);
+            }
+            return NotFound();
         }
+
+        //GET: api/estoque/list
+        [HttpGet]
+        [Route("list")]
+        public IActionResult List() => Ok(_context.Estoques.ToList());
 
     }
 }

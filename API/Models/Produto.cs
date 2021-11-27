@@ -12,13 +12,15 @@ namespace API.Models
 
         public string Descricao { get; set; }
 
-        public string UnidadeMedida { get; set; }
+        public int Quantidade { get; set; }
 
-        public string TipoEstoque {get; set;}
-        
+        public Estoque Estoque { get; set; }
+
+        public Fornecedor Fornecedor {get; set;}
+
         public DateTime CriadoEm { get; set; }
 
         public override string ToString() =>
-            $"Nome: {NomeProduto} | Descrição: {Descricao} | Unidade de medida: {UnidadeMedida} | Criado em: {CriadoEm}";
+            $"Nome: {NomeProduto} | Descrição: {Descricao} | Unidade de medida: {Quantidade} | Criado em: {CriadoEm}";
     }
 }
