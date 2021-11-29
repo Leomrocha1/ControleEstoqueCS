@@ -8,10 +8,13 @@
             <input matInput placeholder="Descrição" [(ngModel)]="produto.Descricao" name="Descricao">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Unidade de Medida" [(ngModel)]="produto.UnidadeMedida" name="UnidadeMedida">
+            <input matInput placeholder="Unidade de Medida" [(ngModel)]="produto.Quantidade" name="Quantidade">
         </mat-form-field>
         <mat-form-field> 
-            <input matInput placeholder="Tipo de Estoque" [(ngModel)]="produto.TipoEstoque" name="TipoEstoque">
+            <input matInput placeholder="Tipo de Estoque" [(ngModel)]="produto.Estoque" name="Estoque">
+        </mat-form-field>
+        <mat-form-field> 
+            <input matInput placeholder="Fornecedor" [(ngModel)]="produto.Fornecedor" name="Fornecedor">
         </mat-form-field>
     </form>
 

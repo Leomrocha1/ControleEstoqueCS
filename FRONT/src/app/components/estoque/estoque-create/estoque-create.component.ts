@@ -10,27 +10,23 @@ import { EstoqueService } from '../estoque.service';
 })
 export class EstoqueCreateComponent implements OnInit {
 
-  // estoque: Estoque ={
-  //   Produto: undefined,
-  //   Fornecedor: undefined,
-  //   Quantidade: 0,
-  //   Valor: 0,
-  //   Lote: 0
-  // }
+  estoque: Estoque ={
+    TipoEstoque: ""
+  }
 
   constructor(private estoqueService: EstoqueService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  // createFornecedor(): void{
-  //   this.estoqueService.create(this.estoque).subscribe(()=>{
-  //     this.estoqueService.showMessage('Entrada cadastrada')
-  //     this.router.navigate(['/estoques'])
-  //   })
+  createEstoque(): void{
+    this.estoqueService.create(this.estoque).subscribe(()=>{
+      this.estoqueService.showMessage('Estoque cadastrado')
+      this.router.navigate(['/estoques'])
+    })
 
-  // }
-  // cancel(): void{
-  //   this.router.navigate(['/fornecedores'])
-  // }
+  }
+  cancel(): void{
+    this.router.navigate(['/estoques'])
+  }
 }

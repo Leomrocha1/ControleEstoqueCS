@@ -13,8 +13,9 @@ export class ProdutoCreateComponent implements OnInit {
   produto: Produto = {
     NomeProduto: '',
     Descricao: '',
-    UnidadeMedida: '',
-    TipoEstoque: ''
+    Quantidade: 0,
+    Estoque: '',
+    Fornecedor: ''
   }
 
   constructor(private produtoService: ProdutoService, private router: Router) { }

@@ -2,27 +2,15 @@
     <mat-card-title>Estoque</mat-card-title>
     <form action="">
         <mat-form-field>
-            <input matInput placeholder="Produto">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Fornecedor">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Quantidade">
-        </mat-form-field>
-        <mat-form-field> 
-            <input matInput placeholder="Valor">
-        </mat-form-field>
-        <mat-form-field> 
-            <input matInput placeholder="Lote">
+            <input matInput placeholder="Nome" [(ngModel)]="estoque.TipoEstoque" name="TipoEstoque">
         </mat-form-field>
     </form>
 
-    <button mat-raised-button color="primary">
+    <button mat-raised-button (click)="createEstoque()" color="primary">
         Salvar
     </button>
     
-    <button mat-raised-button>
+    <button mat-raised-button (click)="cancel()">
         Cancelar
     </button>
     
